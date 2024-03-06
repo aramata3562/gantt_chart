@@ -27,7 +27,7 @@ function setEveryDayTrigger(handlerFuncName, atHour) {
 
 
 /**
- * スプレッドシートからの編集時トリガーをセットします。
+ * スプレッドシートからの編集時トリガーをセットします。 
  * ※すでにセットされている場合は上書きします。
  * 
  * @param {object} 対象のスプレッドシートオブジェクト

@@ -1,7 +1,7 @@
 // PJT開始日終了日位置
-const POS_PJT_PERIOD = "N1:O1";
+const POS_PJT_PERIOD = "M1:N1";
 
-// 列番号 ここをいじれば行も追加できそう
+// 列番号 ここをきちんと整理をする。
 const COL_ROW_NO = 1;
 const COL_ID = 2;
 const COL_ID_1 = 3;
@@ -12,18 +12,20 @@ const COL_TASK_MILESTONE = 7;
 const COL_TASK_PARENT = 8;
 const COL_TASK_CHILD = 9;
 const COL_TASK_CHILD_SUB = 10;
-const COL_ASSIGN = 11;
-const COL_STATUS = 12;
-const COL_PROGRESS = 13;
-const COL_SDATE = 14;
-const COL_EDATE = 15;
-const COL_MEMO = 16;
-const COL_CHART = 17;
+// const COL_ASSIGN = 11;  これは使わない
+const COL_STATUS = 11;      
+const COL_PROGRESS = 12;    // true falseで行う
+const COL_SDATE = 13;       //ここは変更なし
+const COL_DEPEND_TASK = 14;     // 依存タスク
+const COL_DATE_DIF = 15;        // 日付差分
+const COL_EDATE = 16;
+const COL_MEMO = 17;
+const COL_CHART = 18;
 
 // 列名（アルファベット１文字）
-const COL_A1_PROGRESS = "M";
-const COL_A1_SDATE = "N";
-const COL_A1_EDATE = "O";
+const COL_A1_PROGRESS = "L"; // ture falseのとこ。何に使ってるかもわからん
+const COL_A1_SDATE = "M";   
+const COL_A1_EDATE = "P";
 
 // 行番号
 const ROW_TASK_DATA = 4;
