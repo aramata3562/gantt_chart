@@ -82,6 +82,7 @@ function onClickPJTPeriod() {
   // 編集時トリガーをセットする（シンプルトリガーは権限が低いため、明示的にトリガーをセットする）
   setForSpreadsheetOnEditTrigger(GSS, "onEditCell");
   setForSpreadsheetOnEditTrigger(GSS, "onEditDependtask");
+  setForSpreadsheetOnEditTrigger(GSS, "onCalculateEndDate");
 
 }
 
@@ -149,7 +150,7 @@ function applyTaskBulkByTrigger() {
  * COL_SDATE, COL_DEPEND_TASK, COL_DATE_DIFから、COL_EDATEを計算します。
  * COL_DEPEND_TASKの値が空でない場合、同じ行のCOL_SDATEにCOL_DATE_DIFを加算してCOL_EDATEを計算します。
  */
-function calculateEndDate(e) {
+function onCalculateEndDate(e) {
   Logger.log("call calculateEndDate");
 
   // 編集対象のシートチェック
