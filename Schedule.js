@@ -13,8 +13,9 @@ const COL_TASK_PARENT = 8;
 const COL_TASK_CHILD = 9;
 const COL_TASK_CHILD_SUB = 10;
 // const COL_ASSIGN = 11;  これは使わない
-const COL_STATUS = 11;      
-const COL_PROGRESS = 12;    // true falseで行う
+// const COL_STATUS = 11;      
+const COL_PROGRESS = 11;    // パーセントで管理をする
+const COL_BOOL_PROGRESS = 12;  // true falseで行う
 const COL_SDATE = 13;       //ここは変更なし
 const COL_DEPEND_TASK = 14;     // 依存タスク
 const COL_DATE_DIF = 15;        // 日付差分
@@ -23,7 +24,7 @@ const COL_MEMO = 17;
 const COL_CHART = 18;
 
 // 列名（アルファベット１文字）
-const COL_A1_PROGRESS = "L"; // ture falseのとこ。何に使ってるかもわからん
+const COL_A1_PROGRESS = "L"; 
 const COL_A1_SDATE = "M";   
 const COL_A1_EDATE = "P";
 
@@ -283,7 +284,7 @@ class Schedule {
    */
   setFormulaToTask(task) {
     if (task.progress == true){
-      task.status = 1
+      task.progress = 1
     }
     if (task.hasChildTask()) {
       let rows = [];
