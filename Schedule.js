@@ -282,6 +282,9 @@ class Schedule {
    * 親タスクは、子タスクの進捗率と開始日、終了日からの算出式をセットする
    */
   setFormulaToTask(task) {
+    if (task.progress == true){
+      task.status = 1
+    }
     if (task.hasChildTask()) {
       let rows = [];
       for (let childTask of task.childs) {

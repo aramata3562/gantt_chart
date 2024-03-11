@@ -29,9 +29,9 @@ class Task {
     this.idArray.push(taskValues[COL_ID_3 - 1]);
     this.idArray.push(taskValues[COL_ID_4 - 1]);
     this.level = this.getLevel();
-    this.assignee = taskValues[COL_ASSIGN - 1];
+    // this.assignee = taskValues[COL_ASSIGN - 1];
     this.status = taskValues[COL_STATUS - 1];
-    this.progress = taskValues[COL_PROGRESS - 1];
+    this.progress = taskValues[COL_PROGRESS - 1];   // true falseでいい
     this.sDate = dayjs(taskValues[COL_SDATE - 1]).startOf("day");
     this.eDate = dayjs(taskValues[COL_EDATE - 1]).startOf("day");
 
