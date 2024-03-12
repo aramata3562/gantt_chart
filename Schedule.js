@@ -24,7 +24,7 @@ const COL_MEMO = 17;
 const COL_CHART = 18;
 
 // 列名（アルファベット１文字）
-const COL_A1_PROGRESS = "L"; 
+const COL_A1_PROGRESS = "K"; 
 const COL_A1_SDATE = "M";   
 const COL_A1_EDATE = "P";
 
@@ -283,7 +283,7 @@ class Schedule {
    * 親タスクは、子タスクの進捗率と開始日、終了日からの算出式をセットする
    */
   setFormulaToTask(task) {
-    if (task.progress == true){
+    if (task.COL_BOOL_PROGRESS == true){
       task.progress = 1
     }
     if (task.hasChildTask()) {

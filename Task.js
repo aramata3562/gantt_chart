@@ -1,4 +1,5 @@
 // タスクのステータス
+/** 
 const StausType = {
   None: "",
   New: "未着手",
@@ -7,6 +8,7 @@ const StausType = {
   WIP_Delay: "実施中(遅延)",
   Done: "完了",
 };
+*/
 
 // 遅延判定日数（下記日数を超えた場合に遅延となる）
 const DELAY_DAYS = 3;
@@ -30,8 +32,9 @@ class Task {
     this.idArray.push(taskValues[COL_ID_4 - 1]);
     this.level = this.getLevel();
     // this.assignee = taskValues[COL_ASSIGN - 1];
-    this.status = taskValues[COL_STATUS - 1];
-    this.progress = taskValues[COL_PROGRESS - 1];   // true falseでいい
+    // this.status = taskValues[COL_STATUS - 1];
+    this.progress = taskValues[COL_PROGRESS - 1]; // %のところ
+    this.boolProgress = taskValues[COL_BOOL_PROGRESS - 1];  // true false
     this.sDate = dayjs(taskValues[COL_SDATE - 1]).startOf("day");
     this.eDate = dayjs(taskValues[COL_EDATE - 1]).startOf("day");
 
@@ -161,7 +164,7 @@ class Task {
     // 無効タスクの場合
     if (!this.isValidPeriod()) {
       // ステータスクリア
-      this.status = StausType.None;
+      //this.status = StausType.None;
       // 本日にイナズママーク
       this.dayChart.fill(">", this.schedule.todayPos, this.schedule.todayPos + 1);
       this.weekChart.fill(">", this.schedule.todayWeekPos, this.schedule.todayWeekPos + 1);
@@ -202,34 +205,34 @@ class Task {
     if (this.progress == 0) {
       if (this.schedule.today < this.sDate) {
         // 未来の未着手タスク、本日にイナズママーク
-        this.status = StausType.New;
+        // this.status = StausType.New;
         this.dayChart.fill(">", this.schedule.todayPos, this.schedule.todayPos + 1);
         this.weekChart.fill(">", this.schedule.todayWeekPos, this.schedule.todayWeekPos + 1);
       } else {
         // 遅延の未着手タスク、タスク開始日にイナズママーク
-        this.status = StausType.New_Delay;
+        // this.status = StausType.New_Delay;
         this.dayChart.fill(">", sDayPos, sDayPos + 1);
         this.weekChart.fill(">", sWeekPos, sWeekPos + 1);
       }
     } else if (this.progress == 1) {
       if (this.eDate <= this.schedule.today) {
         // 過去の完了タスク、本日にイナズママーク
-        this.status = StausType.Done;
+        // this.status = StausType.Done;
         this.dayChart.fill(">", this.schedule.todayPos, this.schedule.todayPos + 1);
         this.weekChart.fill(">", this.schedule.todayWeekPos, this.schedule.todayWeekPos + 1);
       } else {
         // 未来の完了タスク、タスク終了日にイナズママーク
-        this.status = StausType.Done;
+        // this.status = StausType.Done;
         this.dayChart.fill(">", progressDayPos - 1, progressDayPos);
         this.weekChart.fill(">", progressWeekPos - 1, progressWeekPos);
       }
     } else {
       if ((this.schedule.todayPos - progressDayPos) > DELAY_DAYS) {
         // 遅延の実施中タスク
-        this.status = StausType.WIP_Delay;
+        // this.status = StausType.WIP_Delay;
       } else {
         // 実施中タスク
-        this.status = StausType.WIP;
+        // this.status = StausType.WIP;
       }
       this.dayChart.fill(">", progressDayPos - 1, progressDayPos);
       this.weekChart.fill(">", progressWeekPos - 1, progressWeekPos);
